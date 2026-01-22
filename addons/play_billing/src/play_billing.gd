@@ -1,6 +1,6 @@
 # MIT License
 # 
-# Copyright (c) 2024-present Achyuta Studios
+# Copyright (c) 2024-present Luminix Studios
 # 
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal
@@ -157,10 +157,16 @@ func _init() -> void:
 		printerr("Google Play Billing is only supported on Android. The current platform does not support it.")
 
 
-## Initiates a connection to the billing service.
-func start_connection() -> void:
+## Initiates a connection to the Google Play Billing service.
+##
+## If [param enable_auto_service_connection] is true, the plugin will automatically
+## reconnect to the billing service if the connection is lost (for example, due to
+## Play Store updates or process restarts).
+##
+## Call this before querying products, purchases, or launching the billing flow.
+func start_connection(enable_auto_service_connection: bool = true) -> void:
 	if _plugin:
-		_plugin.startConnection()
+		_plugin.startConnection(enable_auto_service_connection)
 
 
 ## Ends the connection to the billing service.
