@@ -22,7 +22,7 @@ Welcome to the download page for the Godot Play Billing Library! Here, you can e
 ### Manual Download: Obtain the plugin directly from GitHub.
 
 
-1. Visit the [GodotPlayBilling GitHub Releases page](https://github.com/AchyutaStudios/godot-play-billing/releases).
+1. Visit the [GodotPlayBilling GitHub Releases page](https://github.com/LuminixStudios/godot-play-billing/releases).
 2. Download the desired version of the plugin from the available releases.
 
 > Note: The plugin includes all necessary `.aar` and `.gdap` files for setup. Developers do not need to download or set up these files separately.

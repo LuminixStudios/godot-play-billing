@@ -3,7 +3,7 @@ theme:
   name: material
   logo: assets/icon_white.png
   favicon: assets/icon.png
-  copyright: "© 2024-present Achyuta Studios. All rights reserved."
+  copyright: "© 2024-present Luminix Studios. All rights reserved."
   palette: 
     - media: "(prefers-color-scheme)"
       toggle:
@@ -56,5 +56,5 @@ markdown_extensions:
 extra:
   social:
     - icon: fontawesome/brands/x-twitter
-      link: https://x.com/AchyutaStudios
-copyright: Copyright &copy; 2024-present Achyuta Studios. All rights reserved.
+      link: https://x.com/LuminixStudios
+copyright: Copyright &copy; 2024-present Luminix Studios. All rights reserved.

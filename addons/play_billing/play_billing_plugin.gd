@@ -1,6 +1,6 @@
 # MIT License
 # 
-# Copyright (c) 2024-present Achyuta Studios
+# Copyright (c) 2024-present Luminix Studios
 # 
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal
@@ -47,7 +47,8 @@ class PlayBillingExportPlugin extends EditorExportPlugin:
 	
 	
 	func _get_android_libraries(
-		platform: EditorExportPlatform, debug: bool) -> PackedStringArray:
+		platform: EditorExportPlatform, debug: bool
+	) -> PackedStringArray:
 		if debug:
 			return PackedStringArray(
 				["res://addons/play_billing/aar/GodotPlayBilling-debug.aar"]
@@ -56,11 +57,10 @@ class PlayBillingExportPlugin extends EditorExportPlugin:
 			["res://addons/play_billing/aar/GodotPlayBilling-release.aar"]
 		)
 	
-	
 	func _get_android_dependencies(
 		platform: EditorExportPlatform, debug: bool) -> PackedStringArray:
 		return PackedStringArray(
-			["com.android.billingclient:billing-ktx:7.1.1"]
+			["com.android.billingclient:billing-ktx:8.3.0"]
 		)
 
 
