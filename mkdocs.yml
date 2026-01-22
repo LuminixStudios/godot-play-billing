@@ -51,6 +51,7 @@ nav:
         - OneTimePurchaseOfferDetails: api-reference/models/product-detail/purchase-offer.md
         - InstallmentPlanDetails: api-reference/models/product-detail/installment-plan-details.md
         - SubscriptionOfferDetails: api-reference/models/product-detail/subscription-offer-details.md
+  - ChangeLog: changelog.md
 markdown_extensions:
   - pymdownx.superfences
 extra:

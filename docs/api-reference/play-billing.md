@@ -169,10 +169,15 @@ Categorizes product types for billing.
 ### start_connection
 
 ```gdscript
-func start_connection() -> void
+func start_connection(enable_auto_service_connection: bool = true) -> void:
 ```
 
-Initiates a connection to the billing service.
+Initiates a connection to the Google Play Billing service.
+
+**Parameters:**
+
+- `enable_auto_service_connection`: If `true`, the billing client will automatically
+  attempt to reconnect when the service is disconnected. (default is true)
 
 ---
 

@@ -33,6 +33,12 @@ func _ready():
 	_play_billing.start_connection()
 ```
 
+If you want to manually handle reconnection if connection is lost.
+```gdscript linenums="1"
+func _ready():
+	_play_billing.start_connection(enable_auto_service_connection = false)
+```
+
 ### Connection Success
 
 Upon a successful connection, the [PlayBilling](api-reference/play-billing.md) node emits a [connected](api-reference/play-billing.md#connected) signal.
