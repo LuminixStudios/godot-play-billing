@@ -17,7 +17,7 @@ To get started, follow these steps:
 ## Compatibility Information
 
 - Supported Godot Version: **4.2 and above**
-- Google Play Billing Library Version: **7.1.1**
+- Google Play Billing Library Version: **8.3.0**
 - Android Requirements:
     - Minimum SDK Version: 24
 
