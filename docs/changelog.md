@@ -1,6 +1,10 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [1.3.1] - 2026-01-28
+### Changed
+- Migrated plugin to Godot 4.6.
+
 ## [1.3.0] - 2026-01-22
 ### Changed
 - Updated Google Play Billing Library to 8.3.0
