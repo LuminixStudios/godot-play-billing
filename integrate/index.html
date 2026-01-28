@@ -1,0 +1,1472 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../get-started/installation/">
+      
+      
+        <link rel="next" href="../api-reference/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/icon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+    
+    
+      
+        <title>Integrate Play Billing - Godot Play Billing</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#integrate-play-billing" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Godot Play Billing" class="md-header__button md-logo" aria-label="Godot Play Billing" data-md-component="logo">
+      
+  <img src="../assets/icon_white.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Godot Play Billing
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Integrate Play Billing
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme)" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.3 16-.7-2h-3.2l-.7 2H7.8L11 7h2l3.2 9zM20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12zm-9.15 3.96h2.3L12 9z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="blue" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Godot Play Billing" class="md-nav__button md-logo" aria-label="Godot Play Billing" data-md-component="logo">
+      
+  <img src="../assets/icon_white.png" alt="logo">
+
+    </a>
+    Godot Play Billing
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Introduction
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Get Started
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Get Started
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../get-started/download/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Download
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../get-started/installation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Installation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Integrate Play Billing
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Integrate Play Billing
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#add-playbilling-node-to-your-scene" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Add PlayBilling Node to your scene
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#initialise" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Initialise
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Initialise">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#connection-success" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Connection Success
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#connection-error" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Connection Error
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#displaying-available-products" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Displaying Available Products
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#launch-purchase-flow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Launch Purchase Flow
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Launch Purchase Flow">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#purchasing-a-product" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Purchasing a Product
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#subscribing-to-a-product" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Subscribing to a Product
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#processing-purchased-items" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Processing Purchased Items
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Processing Purchased Items">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#acknowledge-products" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Acknowledge Products
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#consume-products" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Consume Products
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#handling-pending-purchases" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Handling pending Purchases
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../api-reference/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Api Reference
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4" id="__nav_4_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Api Reference
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api-reference/play-billing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Play Billing
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_3" id="__nav_4_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Models
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Models
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api-reference/models/purchase/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Purchase
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3_2" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../api-reference/models/product-detail/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ProductDetail
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4_3_2" id="__nav_4_3_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    ProductDetail
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api-reference/models/product-detail/pricing-phase/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pricing Phase
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api-reference/models/product-detail/purchase-offer/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    OneTimePurchaseOfferDetails
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api-reference/models/product-detail/installment-plan-details/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    InstallmentPlanDetails
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api-reference/models/product-detail/subscription-offer-details/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SubscriptionOfferDetails
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../changelog/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ChangeLog
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#add-playbilling-node-to-your-scene" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Add PlayBilling Node to your scene
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#initialise" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Initialise
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Initialise">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#connection-success" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Connection Success
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#connection-error" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Connection Error
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#displaying-available-products" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Displaying Available Products
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#launch-purchase-flow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Launch Purchase Flow
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Launch Purchase Flow">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#purchasing-a-product" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Purchasing a Product
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#subscribing-to-a-product" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Subscribing to a Product
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#processing-purchased-items" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Processing Purchased Items
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Processing Purchased Items">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#acknowledge-products" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Acknowledge Products
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#consume-products" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Consume Products
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#handling-pending-purchases" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Handling pending Purchases
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+                
+
+
+
+  
+
+
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="integrate-play-billing">Integrate Play Billing</h1>
+<p>Before proceeding with the integration, please ensure that you have completed the following steps:</p>
+<ol>
+<li><strong>Set Up Your Google Play Console Account:</strong> Make sure your app is created and configured in the Google Play Console.</li>
+<li><strong>Configure In-App Purchase Products:</strong> Set up the required in-app purchase products in the Google Play Console, as these will be necessary for testing and implementing the billing functionality.</li>
+</ol>
+<blockquote>
+<p>Note: The Google Play billing server only connects with APKs downloaded from the Play Store. Ensure you have created at least an internal release in the Play Console so you can download the app from the Play Store for testing purposes.</p>
+</blockquote>
+<h2 id="add-playbilling-node-to-your-scene">Add PlayBilling Node to your scene</h2>
+<p>Once the plugin is enabled, the <a href="../api-reference/play-billing/">PlayBilling</a> node will appear in the Node Hierarchy.</p>
+<p><img alt="Add PlayBilling Node" src="../assets/add_play_billing.png" /></p>
+<p>Simply add the <a href="../api-reference/play-billing/">PlayBilling</a> node to your scene to begin integrating Google Play Billing.</p>
+<h2 id="initialise">Initialise</h2>
+<p>To get started, obtain a reference to the <a href="../api-reference/play-billing/">PlayBilling</a> node:</p>
+<div class="highlight"><pre><span></span><code><span class="err">@</span><span class="k">onready</span><span class="w"> </span><span class="k">var</span><span class="w"> </span><span class="n">_play_billing</span><span class="p">:</span><span class="w"> </span><span class="n">PlayBilling</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">$</span><span class="n">PlayBilling</span>
+</code></pre></div>
+<p>Use <a href="../api-reference/play-billing/#start_connection">start_connection</a> to establish a connection to the Play Billing server:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="err">@</span><span class="k">onready</span><span class="w"> </span><span class="k">var</span><span class="w"> </span><span class="n">_play_billing</span><span class="p">:</span><span class="w"> </span><span class="n">PlayBilling</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">$</span><span class="n">PlayBilling</span>
+
+<span class="k">func</span><span class="w"> </span><span class="n">_ready</span><span class="p">():</span>
+<span class="w">    </span><span class="n">_play_billing</span><span class="o">.</span><span class="n">start_connection</span><span class="p">()</span>
+</code></pre></div></td></tr></table></div>
+<p>If you want to manually handle reconnection if connection is lost.
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">func</span><span class="w"> </span><span class="n">_ready</span><span class="p">():</span>
+<span class="w">    </span><span class="n">_play_billing</span><span class="o">.</span><span class="n">start_connection</span><span class="p">(</span><span class="n">enable_auto_service_connection</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="bp">false</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div></p>
+<h3 id="connection-success">Connection Success</h3>
+<p>Upon a successful connection, the <a href="../api-reference/play-billing/">PlayBilling</a> node emits a <a href="../api-reference/play-billing/#connected">connected</a> signal.</p>
+<p>After the connection is established, query the product details. <strong>Important:</strong> A product query must be completed successfully before calling <a href="../api-reference/play-billing/#purchase">purchase</a> or <a href="../api-reference/play-billing/#subscribe">subscribe</a>; otherwise, they will return an error.</p>
+<p><a href="../api-reference/play-billing/#query_product_details">query_product_details</a> function accepts two arguments:</p>
+<ol>
+<li>Array of product IDs.</li>
+<li><a href="../api-reference/play-billing/#producttype">ProductType</a> enum.</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="k">func</span><span class="w"> </span><span class="n">_on_play_billing_connected</span><span class="p">()</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nb nb-Type">void</span><span class="p">:</span>
+<span class="w">    </span><span class="n">_play_billing</span><span class="o">.</span><span class="n">query_product_details</span><span class="p">([</span><span class="s2">&quot;product_ids&quot;</span><span class="p">],</span><span class="w"> </span><span class="n">PlayBilling</span><span class="o">.</span><span class="n">ProductType</span><span class="o">.</span><span class="n">INAPP</span><span class="p">)</span>
+</code></pre></div>
+<h3 id="connection-error">Connection Error</h3>
+<p>Upon failed connection, the <a href="../api-reference/play-billing/">PlayBilling</a> node emits a <code>connect_error</code> signal. Use the <code>error_code</code> and <code>debug_message</code> for logging.</p>
+<div class="highlight"><pre><span></span><code><span class="k">func</span><span class="w"> </span><span class="n">_on_play_billing_connect_error</span><span class="p">(</span><span class="n">error_code</span><span class="p">:</span><span class="w"> </span><span class="n">PlayBilling</span><span class="o">.</span><span class="n">BillingResponseCode</span><span class="p">,</span><span class="w"> </span><span class="n">debug_message</span><span class="p">:</span><span class="w"> </span><span class="nb nb-Type">String</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nb nb-Type">void</span><span class="p">:</span>
+<span class="w">    </span><span class="nb">print</span><span class="p">(</span><span class="n">error_code</span><span class="p">,</span><span class="w"> </span><span class="n">debug_message</span><span class="p">)</span>
+</code></pre></div>
+<h2 id="displaying-available-products">Displaying Available Products</h2>
+<p>Once the product query is successful, the <a href="../api-reference/play-billing/#product_details_query_completed">product_details_query_completed</a> signal is emitted. If the query fails, the <a href="../api-reference/play-billing/#product_details_query_error">product_details_query_error</a> signal is emitted instead.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">func</span><span class="w"> </span><span class="n">_on_play_billing_product_details_query_completed</span><span class="p">(</span><span class="n">product_detail_list</span><span class="p">:</span><span class="w"> </span><span class="nb nb-Type">Array</span><span class="p">[</span><span class="n">ProductDetail</span><span class="p">])</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nb nb-Type">void</span><span class="p">:</span>
+<span class="w">    </span><span class="nb">print</span><span class="p">(</span><span class="n">product_detail_list</span><span class="p">)</span>
+
+
+<span class="k">func</span><span class="w"> </span><span class="n">_on_play_billing_product_details_query_error</span><span class="p">(</span><span class="n">error_code</span><span class="p">:</span><span class="w"> </span><span class="n">PlayBilling</span><span class="o">.</span><span class="n">BillingResponseCode</span><span class="p">,</span><span class="w"> </span><span class="n">debug_message</span><span class="p">:</span><span class="w"> </span><span class="nb nb-Type">String</span><span class="p">,</span><span class="w"> </span><span class="n">product_id_list</span><span class="p">:</span><span class="w"> </span><span class="nb nb-Type">Array</span><span class="p">[</span><span class="nb nb-Type">String</span><span class="p">])</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nb nb-Type">void</span><span class="p">:</span>
+<span class="w">    </span><span class="nb">print</span><span class="p">(</span><span class="n">error_code</span><span class="p">,</span><span class="w"> </span><span class="n">debug_message</span><span class="p">,</span><span class="w"> </span><span class="n">product_id_list</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+<p>The signal emits list of <a href="../api-reference/models/product-detail/">ProductDetail</a>. Use the information provided in each <a href="../api-reference/models/product-detail/">ProductDetail</a> to display relevant product information for users.</p>
+<h2 id="launch-purchase-flow">Launch Purchase Flow</h2>
+<h3 id="purchasing-a-product">Purchasing a Product</h3>
+<p>To launch purchase flow, use the <a href="../api-reference/play-billing/#purchase">purchase</a> method. This method requires the <code>product_id</code> which is the unique identifier for the product.</p>
+<div class="highlight"><pre><span></span><code><span class="n">_play_billing</span><span class="o">.</span><span class="n">purchase</span><span class="p">(</span><span class="s2">&quot;product_id&quot;</span><span class="p">)</span>
+</code></pre></div>
+<h3 id="subscribing-to-a-product">Subscribing to a Product</h3>
+<p>To launch subscription flow, use the <a href="../api-reference/play-billing/#subscribe">subscribe</a> method. This method requires the <code>product_id</code> which is the unique identifier for the product, and an optional <code>offer_token</code>.</p>
+<div class="highlight"><pre><span></span><code><span class="n">_play_billing</span><span class="o">.</span><span class="n">subscribe</span><span class="p">(</span><span class="s2">&quot;product_id&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;offer_token&quot;</span><span class="p">)</span>
+</code></pre></div>
+<h2 id="processing-purchased-items">Processing Purchased Items</h2>
+<p>After a succesfull <a href="../api-reference/play-billing/#purchase">purchase</a> or <a href="../api-reference/play-billing/#subscribe">subscribe</a> call, the payment flow will emit the <a href="../api-reference/play-billing/#purchases_updated">purchases_updated</a> signal. If payment flow fails <a href="../api-reference/play-billing/#purchases_updated_error">purchases_updated_error</a> signal is emitted instead.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">func</span><span class="w"> </span><span class="n">_on_play_billing_purchases_updated</span><span class="p">(</span><span class="n">purchases</span><span class="p">:</span><span class="w"> </span><span class="nb nb-Type">Array</span><span class="p">[</span><span class="n">Purchase</span><span class="p">])</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nb nb-Type">void</span><span class="p">:</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="n">purchase</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">purchases</span><span class="p">:</span>
+<span class="w">        </span><span class="n">_process_purchase</span><span class="p">(</span><span class="n">purchase</span><span class="p">)</span>
+
+
+<span class="k">func</span><span class="w"> </span><span class="n">_on_play_billing_purchases_updated_error</span><span class="p">(</span><span class="n">error_code</span><span class="p">:</span><span class="w"> </span><span class="n">PlayBilling</span><span class="o">.</span><span class="n">BillingResponseCode</span><span class="p">,</span><span class="w"> </span><span class="n">debug_message</span><span class="p">:</span><span class="w"> </span><span class="nb nb-Type">String</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nb nb-Type">void</span><span class="p">:</span>
+<span class="w">    </span><span class="nb">print</span><span class="p">(</span><span class="n">error_code</span><span class="p">,</span><span class="w"> </span><span class="n">debug_message</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+<h3 id="acknowledge-products">Acknowledge Products</h3>
+<p>Products need to be acknowledged to complete the billing cycle. Use the <a href="../api-reference/play-billing/#acknowledge_purchase">acknowledge_purchase</a> method to acknowledge purchases.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">func</span><span class="w"> </span><span class="n">_process_purchase</span><span class="p">(</span><span class="n">purchase</span><span class="p">:</span><span class="w"> </span><span class="n">Purchase</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nb nb-Type">void</span><span class="p">:</span>
+<span class="c1"># Save purchase for future verification.</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="n">purchase</span><span class="o">.</span><span class="n">purchase_state</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">Purchase</span><span class="o">.</span><span class="n">PurchaseState</span><span class="o">.</span><span class="n">PURCHASED</span><span class="p">:</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="s2">&quot;product_id&quot;</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">purchase</span><span class="o">.</span><span class="n">product_ids</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="o">!</span><span class="n">purchase</span><span class="o">.</span><span class="n">is_acknowledged</span><span class="p">:</span>
+<span class="w">            </span><span class="n">_play_billing</span><span class="o">.</span><span class="n">acknowledge_purchase</span><span class="p">(</span><span class="n">purchase</span><span class="o">.</span><span class="n">purchase_token</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+<p>Once a product is successfully acknowledged, the <a href="../api-reference/play-billing/#purchase_acknowledged">purchase_acknowledged</a> signal is emitted. If an error occurs, the <a href="../api-reference/play-billing/#purchase_acknowledgement_error">purhase_acknowledgement_error</a> signal is emitted instead.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">func</span><span class="w"> </span><span class="n">_on_play_billing_purchase_acknowledged</span><span class="p">(</span><span class="n">purchase_token</span><span class="p">:</span><span class="w"> </span><span class="nb nb-Type">String</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nb nb-Type">void</span><span class="p">:</span>
+<span class="w">    </span><span class="c1"># _purchase is the saved list of purchases.</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="n">purchase</span><span class="p">:</span><span class="w"> </span><span class="n">Purchase</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">_purchases</span><span class="p">:</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="n">purchase_token</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">purchase</span><span class="o">.</span><span class="n">purchase_token</span><span class="p">:</span>
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="s2">&quot;product_id&quot;</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">purchase</span><span class="o">.</span><span class="n">product_ids</span><span class="p">:</span>
+<span class="w">                </span><span class="c1"># Award item to user.</span>
+
+
+<span class="k">func</span><span class="w"> </span><span class="n">_on_play_billing_purchase_acknowledgement_error</span><span class="p">(</span><span class="n">error_code</span><span class="p">:</span><span class="w"> </span><span class="n">PlayBilling</span><span class="o">.</span><span class="n">BillingResponseCode</span><span class="p">,</span><span class="w"> </span><span class="n">debug_message</span><span class="p">:</span><span class="w"> </span><span class="nb nb-Type">String</span><span class="p">,</span><span class="w"> </span><span class="n">purchase_token</span><span class="p">:</span><span class="w"> </span><span class="nb nb-Type">String</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nb nb-Type">void</span><span class="p">:</span>
+<span class="w">    </span><span class="nb">print</span><span class="p">(</span><span class="n">error_code</span><span class="p">,</span><span class="w"> </span><span class="n">debug_message</span><span class="p">,</span><span class="w"> </span><span class="n">purchase_token</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+<h3 id="consume-products">Consume Products</h3>
+<p>Consumable products, such as coins, can be purchased multiple times. To allow repeat purchases, consume the product after a successful purchase by calling <a href="../api-reference/play-billing/#consume_purchase">consume_purchase</a>.  This automatically acknowledges the purchase, enabling the user to buy the product again.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">func</span><span class="w"> </span><span class="n">_process_purchase</span><span class="p">(</span><span class="n">purchase</span><span class="p">:</span><span class="w"> </span><span class="n">Purchase</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nb nb-Type">void</span><span class="p">:</span>
+<span class="w">    </span><span class="c1"># Save purchase for future verification.</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="n">purchase</span><span class="o">.</span><span class="n">purchase_state</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">Purchase</span><span class="o">.</span><span class="n">PurchaseState</span><span class="o">.</span><span class="n">PURCHASED</span><span class="p">:</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="s2">&quot;product_id&quot;</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">purchase</span><span class="o">.</span><span class="n">product_ids</span><span class="p">:</span>
+<span class="w">            </span><span class="n">_play_billing</span><span class="o">.</span><span class="n">consume_purchase</span><span class="p">(</span><span class="n">purchase</span><span class="o">.</span><span class="n">purchase_token</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+<p>Once a product is successfully consumed, the <a href="../api-reference/play-billing/#purchase_consumed">purchase_consumed</a> signal is emitted. If an error occurs, the <a href="../api-reference/play-billing/#purchase_consumption_error">purhase_consumption_error</a> signal is emitted instead.</p>
+<p><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">func</span><span class="w"> </span><span class="n">_on_play_billing_purchase_consumed</span><span class="p">(</span><span class="n">purchase_token</span><span class="p">:</span><span class="w"> </span><span class="nb nb-Type">String</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nb nb-Type">void</span><span class="p">:</span>
+<span class="w">    </span><span class="c1"># _purchase is the saved list of purchases.</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="n">purchase</span><span class="p">:</span><span class="w"> </span><span class="n">Purchase</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">_purchases</span><span class="p">:</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="n">purchase_token</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">purchase</span><span class="o">.</span><span class="n">purchase_token</span><span class="p">:</span>
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="s2">&quot;product_id&quot;</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">purchase</span><span class="o">.</span><span class="n">product_ids</span><span class="p">:</span>
+<span class="w">                </span><span class="c1"># Award product to user.</span>
+
+
+<span class="k">func</span><span class="w"> </span><span class="n">_on_play_billing_purchase_consumption_error</span><span class="p">(</span><span class="n">error_code</span><span class="p">:</span><span class="w"> </span><span class="n">PlayBilling</span><span class="o">.</span><span class="n">BillingResponseCode</span><span class="p">,</span><span class="w"> </span><span class="n">debug_message</span><span class="p">:</span><span class="w"> </span><span class="nb nb-Type">String</span><span class="p">,</span><span class="w"> </span><span class="n">purchase_token</span><span class="p">:</span><span class="w"> </span><span class="nb nb-Type">String</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nb nb-Type">void</span><span class="p">:</span>
+<span class="w">    </span><span class="nb">print</span><span class="p">(</span><span class="n">error_code</span><span class="p">,</span><span class="w"> </span><span class="n">debug_message</span><span class="p">,</span><span class="w"> </span><span class="n">purchase_token</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+<strong>Note</strong>: Consumable products do not require a separate call to <a href="../api-reference/play-billing/#acknowledge_purchase">acknowledge_purchase</a> method as, <a href="../api-reference/play-billing/#consume_purchase">consume_purchase</a> automatically acknowledges them.</p>
+<h2 id="handling-pending-purchases">Handling pending Purchases</h2>
+<p>Purchases can happen outside the app due to poor connection, pending transactions or various other reasons. It is necessary to handle such purchases. Call <a href="../api-reference/play-billing/#query_purchase">query_purchase</a> method to query purchases. <a href="../api-reference/play-billing/#query_purchase">query_purchase</a> requires <a href="../api-reference/play-billing/#producttype">ProductType</a> argument. Generally you would like to query purchase after product details query is completed or when billing client is connected.</p>
+<div class="highlight"><pre><span></span><code><span class="n">_play_billing</span><span class="o">.</span><span class="n">query_purchase</span><span class="p">(</span><span class="n">PlayBilling</span><span class="o">.</span><span class="n">ProductType</span><span class="o">.</span><span class="n">INAPP</span><span class="p">)</span>
+</code></pre></div>
+<p>After successful query it emits <a href="../api-reference/play-billing/#query_purchases_response">query_purchases_response</a>. If error occurs <a href="../api-reference/play-billing/#query_purchase_error">query_purchase_error</a> is emitted instead.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">func</span><span class="w"> </span><span class="n">_on_play_billing_query_purchases_response</span><span class="p">(</span><span class="n">purchase_list</span><span class="p">:</span><span class="w"> </span><span class="nb nb-Type">Array</span><span class="p">[</span><span class="n">Purchase</span><span class="p">])</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nb nb-Type">void</span><span class="p">:</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="n">purchase</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">purchase_list</span><span class="p">:</span>
+<span class="w">        </span><span class="n">_process_purchase</span><span class="p">(</span><span class="n">purchase</span><span class="p">)</span>
+
+
+<span class="k">func</span><span class="w"> </span><span class="n">_on_play_billing_query_purchases_error</span><span class="p">(</span><span class="n">error_code</span><span class="p">:</span><span class="w"> </span><span class="n">PlayBilling</span><span class="o">.</span><span class="n">BillingResponseCode</span><span class="p">,</span><span class="w"> </span><span class="n">debug_message</span><span class="p">:</span><span class="w"> </span><span class="nb nb-Type">String</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nb nb-Type">void</span><span class="p">:</span>
+<span class="w">    </span><span class="nb">print</span><span class="p">(</span><span class="n">error_code</span><span class="p">,</span><span class="w"> </span><span class="n">debug_message</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2024-present Luminix Studios. All rights reserved.
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://x.com/LuminixStudios" target="_blank" rel="noopener" title="x.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M357.2 48h70.6L273.6 224.2 455 464H313L201.7 318.6 74.5 464H3.8l164.9-188.5L-5.2 48h145.6l100.5 132.9zm-24.8 373.8h39.1L119.1 88h-42z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+      <div class="md-progress" data-md-component="progress" role="progressbar"></div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.instant", "navigation.instant.prefetch", "navigation.instant.progress", "navigation.path", "navigation.top", "navigation.indexes", "search.suggest", "search.highlight", "content.tabs.link", "content.code.annotation", "content.code.copy"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>
