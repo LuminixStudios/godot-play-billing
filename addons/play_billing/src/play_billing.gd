@@ -250,8 +250,9 @@ func _disconnected() -> void:
 
 
 func _connect_error(
-	error_code: BillingResponseCode, debug_message: String) -> void:
-	connect_error.emit(error_code, debug_message) 
+	error_code: int, debug_message: String) -> void:
+	var error: BillingResponseCode = error_code
+	connect_error.emit(error, debug_message) 
 
 
 func _query_purchases_response(purchase_list: String) -> void:
@@ -260,8 +261,9 @@ func _query_purchases_response(purchase_list: String) -> void:
 	)
 
 
-func _query_purchases_error(error_code: BillingResponseCode, debug_message: String) -> void:
-	query_purchases_error.emit(error_code, debug_message)
+func _query_purchases_error(error_code: int, debug_message: String) -> void:
+	var error: BillingResponseCode = error_code
+	query_purchases_error.emit(error, debug_message)
 
 
 func _product_details_query_completed(product_detail_list: String) -> void:
@@ -270,33 +272,37 @@ func _product_details_query_completed(product_detail_list: String) -> void:
 	)
 
 
-func _product_details_query_error(error_code: BillingResponseCode, 
+func _product_details_query_error(error_code: int, 
 	debug_message: String, product_id_list: Array[String]) -> void:
-	product_details_query_error.emit(error_code, debug_message, product_id_list)
+	var error: BillingResponseCode = error_code
+	product_details_query_error.emit(error, debug_message, product_id_list)
 
 
 func _purchases_updated(purchases: String) -> void:
 	purchases_updated.emit(Utility.from_Json_to_Purchase_List(purchases))
 
 
-func _purchases_updated_error(error_code: BillingResponseCode, 
+func _purchases_updated_error(error_code: int, 
 	debug_message: String) -> void:
-	purchases_updated_error.emit(error_code, debug_message)
+	var error: BillingResponseCode = error_code
+	purchases_updated_error.emit(error, debug_message)
 
 
 func _purchase_consumed(purchase_token: String) -> void:
 	purchase_consumed.emit(purchase_token)
 
 
-func _purchase_consumption_error(error_code: BillingResponseCode, 
+func _purchase_consumption_error(error_code: int, 
 	debug_message: String, purchase_token: String) -> void:
-	purchase_consumption_error.emit(error_code, debug_message, purchase_token)
+	var error: BillingResponseCode = error_code
+	purchase_consumption_error.emit(error, debug_message, purchase_token)
 
 
 func _purchase_acknowledged(purchase_token: String) -> void:
 	purchase_acknowledged.emit(purchase_token)
 
 
-func _purchase_acknowledgement_error(error_code: BillingResponseCode, 
+func _purchase_acknowledgement_error(error_code: int, 
 	debug_message: String, purchase_token: String) -> void:
-	purchase_acknowledgement_error.emit(error_code, debug_message, purchase_token)
+	var error: BillingResponseCode = error_code
+	purchase_acknowledgement_error.emit(error, debug_message, purchase_token)
