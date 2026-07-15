@@ -2,7 +2,7 @@
 All notable changes to this project will be documented in this file.
 
 ## [1.4.0] - 2026-06-20
-### Changes
+### Changed
 - Migrated to Godot 4.7.0.
 - Updated Google Play Billing Library to v9.1.0.
 
